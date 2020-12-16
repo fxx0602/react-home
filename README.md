@@ -109,3 +109,8 @@ module.exports = function (app) {
         )
     );
 };
+
+
+7.安装redux
+cnpm install --save redux react-redux
+cnpm install --save-dev redux-devtools
