@@ -77,3 +77,5 @@ npm install --save react-router react-router-dom
 
 4.安装轮播的插件
   npm install --save react-swipeable-views
+
+5.后端
