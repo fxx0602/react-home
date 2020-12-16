@@ -79,3 +79,33 @@ npm install --save react-router react-router-dom
   npm install --save react-swipeable-views
 
 5.后端
+  添加mock
+  安装express npm install --save express
+
+
+6.解决跨越问题 
+（1）.安装 cnpm install http-proxy-middleware --save  注意：安装完后需要退出运行状态，再次运行，否则不生效
+（2）在src下建一个setupProxy.js的文件夹，内容如下，0.x和1.x的写法不一样
+   0.x版本的模式
+     const proxy = require('http-proxy-middleware');
+
+    module.exports = function (app) {
+    app.use(proxy('/api', { target: 'http://localhost:3002/' }));
+  };
+
+   1.x版本
+const { createProxyMiddleware } = require("http-proxy-middleware");
+module.exports = function (app) {
+    app.use(
+        "/api",
+        createProxyMiddleware(
+            {
+                target: "http://localhost:3002",
+                changeOrigin: true,
+                pathRewrite: {
+                "/api": ""
+            }
+            }
+        )
+    );
+};
