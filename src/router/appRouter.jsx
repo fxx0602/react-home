@@ -7,12 +7,14 @@ import Shop from '../pages/Shop';
 import Mine from '../pages/Mine';
 import NotFound from '../pages/NotFound';
 import City from '../pages/City';
+import App from '../pages/App';
 
 
 export default class AppRouter extends React.Component {
   render() {
       return (
           <HashRouter>
+              <App path="/">
               <Switch>
                   <Route exact path="/" component={Home}></Route>
                   <Route  path="/life" component={Life}></Route>
@@ -21,6 +23,7 @@ export default class AppRouter extends React.Component {
                   <Route path="/city" component={City}></Route>
                   <Route  path="*" component={NotFound}></Route>
               </Switch>
+              </App>
           </HashRouter>
       )
   }

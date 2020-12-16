@@ -3,7 +3,7 @@ import './style.less';
 
 export default class HotCity extends React.Component {
     ClickHaneleCity(cityName) {
-      console.log(cityName);
+      this.props.cityNameHandle(cityName);
     }
     render() {
         return(

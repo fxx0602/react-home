@@ -1,6 +1,6 @@
 import * as cityActions from "../constants/city";
 
-export default function initCity(data) {
+export function initCity(data) {
     return{
         type:cityActions.INIT_CITY,
         data
@@ -9,7 +9,7 @@ export default function initCity(data) {
 
 
 
-export default function updateCity(data) {
+export function updateCity(data) {
     return {
         type:cityActions.UPDATE_CITY,
         data
