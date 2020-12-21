@@ -10,11 +10,13 @@ import { connect} from 'react-redux';
 import banner1 from '../../static/image/banner1.png';
 import banner2 from '../../static/image/banner2.png';
 import banner3 from '../../static/image/banner3.png';
+
+// 被路由直接包裹的才有history
 class Home extends React.Component {
   render() {
       return (
           <div>
-            <HomeHeader city={this.props.city.cityName} />
+            <HomeHeader city={this.props.city.cityName} history={this.props.history} />
             <Swiper banners={ [banner1,banner2,banner3]} />
             <HomeHot city={this.props.city.cityName} />
             <FootNav />
