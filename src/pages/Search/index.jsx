@@ -2,27 +2,18 @@ import React from 'react';
 import SearchHeader from './searchHeader';
 import api from '../../api';
 import { connect } from 'react-redux';
+import SearchList from './SearchList';
 
 
 class Search extends React.Component {
 
-    componentDidMount() {
+    render() {
         const content=this.props.match.params.content;
         const city = this.props.city.cityName;
-        api.search.searchData(city,content)
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-        });
-    }
-
-    render() {
         return (
             <div>
                 <SearchHeader history={this.props.history} />
-                {
-                    this.props.match.params.content
-                }
+                <SearchList content={content} city={city} />
             </div>
 
         );
