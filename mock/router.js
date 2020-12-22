@@ -4,6 +4,7 @@ var config = require("./config.js");
 var url = require("url");
 var homehot = require("./data/home/hotdata");
 var searchData = require("./data/search")
+var detailsData = require("./data/details");
 
 
 router.get(config.homehot1,function(req,res){
@@ -27,5 +28,13 @@ router.get("/search",function(req,res) {
     console.log('城市:'+cityName+',内容:'+searchContent+',页码:'+page);
     res.send(searchData);
 }) 
+
+//详情接口
+router.get("/details",function(req,res) {
+ //
+ var id = url.parse(req.url,true).query.id;
+ console.log("id"+id);
+  res.send(detailsData);
+})
 
 module.exports = router;

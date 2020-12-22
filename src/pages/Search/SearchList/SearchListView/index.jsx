@@ -14,7 +14,7 @@ export default class SearchListView extends React.Component {
        <div className="list-container">
        {
            data.map((ele,index) => {
-               return <Item data={ele} key={ele.id} />
+               return <Item data={ele} key={index} />
            })
        }
            </div>

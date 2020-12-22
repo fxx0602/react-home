@@ -9,6 +9,7 @@ import NotFound from '../pages/NotFound';
 import City from '../pages/City';
 import App from '../pages/App';
 import Search from '../pages/Search';
+import Details from '../pages/details';
 
 
 export default class AppRouter extends React.Component {
@@ -23,6 +24,7 @@ export default class AppRouter extends React.Component {
                   <Route path="/mine" component={Mine}></Route>
                   <Route path="/city" component={City}></Route>
                   <Route path="/search/:content" component={Search}></Route>
+                  <Route path="/details" component={Details}></Route>
                   <Route  path="*" component={NotFound}></Route>
               </Switch>
               </App>

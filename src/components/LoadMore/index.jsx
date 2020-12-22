@@ -24,6 +24,10 @@ export default class LoadMore extends React.Component {
         }
     }
 
+    componentWillUnmount() {
+        window.onscroll  = null;
+    }
+
     render() {
         return(
 <div ref={this.load}>加载更多</div>

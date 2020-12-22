@@ -60,6 +60,12 @@ export default class SearchList extends React.Component {
        this.http(city,content,this.state.page);
     }
 
+    componentWillUnmount() {
+        this.setState= (state,callback) => {
+            return;
+        }
+    }
+
     render() {
     
         return (
