@@ -23,7 +23,8 @@ router.get(config.homehot2,function(req,res){
 router.get("/search",function(req,res) {
     var cityName = url.parse(req.url,true).query.city;
     var searchContent = url.parse(req.url,true).query.content;
-    console.log('城市:'+cityName+',内容:'+searchContent);
+    var page = url.parse(req.url,true).query.page;
+    console.log('城市:'+cityName+',内容:'+searchContent+',页码:'+page);
     res.send(searchData);
 }) 
 
