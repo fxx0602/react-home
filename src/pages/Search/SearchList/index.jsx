@@ -34,17 +34,25 @@ export default class SearchList extends React.Component {
         });
     }
 
-
-    componentWillUpdate(nextProps,nextState) {
-        const content1=this.props.content;
-        const content2 = nextProps.content;
-        console.log(content1);
-        console.log(content2);
-        if (nextProps.content === this.props.content) {
-            return;
-        }
-        this.http(this.props.city,content2,0);
+    // 做法1
+    componentWillReceiveProps(nextProps) {
+    
+        this.http(this.props.city,nextProps.content,0);
+        console.log(nextProps);
     }
+
+    // 做法2
+    // componentWillUpdate(nextProps,nextState) {
+    //     const content1=this.props.content;
+    //     const content2 = nextProps.content;
+    //     console.log(content1);
+    //     console.log(content2);
+    //     if (nextProps.content === this.props.content) {
+    //         return;
+    //     }
+    //     this.http(this.props.city,content2,0);
+    // }
+
 
     LoadMoreHandle =() => {
         const content=this.props.content;
