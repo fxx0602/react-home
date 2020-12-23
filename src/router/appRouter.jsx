@@ -10,6 +10,7 @@ import City from '../pages/City';
 import App from '../pages/App';
 import Search from '../pages/Search';
 import Details from '../pages/details';
+import Login from '../pages/login';
 
 
 export default class AppRouter extends React.Component {
@@ -24,7 +25,8 @@ export default class AppRouter extends React.Component {
                   <Route path="/mine" component={Mine}></Route>
                   <Route path="/city" component={City}></Route>
                   <Route path="/search/:content" component={Search}></Route>
-                  <Route path="/details" component={Details}></Route>
+                  <Route path="/details/:id" component={Details}></Route>
+                  <Route path="/login" component={Login}></Route>
                   <Route  path="*" component={NotFound}></Route>
               </Switch>
               </App>

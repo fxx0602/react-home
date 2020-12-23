@@ -9,7 +9,7 @@ export default class Item extends React.Component {
         var item = this.props.data
         return (
             <div className="list-item">
-                <Link to={{pathname:"/details",state:{id:item.id}}}>
+                <Link to={'/details/'+item.id}>
                 <img src={banner1} alt="" />
                 <div className="mask">
                     <div className="left">

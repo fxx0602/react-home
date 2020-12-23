@@ -33,7 +33,7 @@ export default class DetailData extends React.Component {
         return(
             <div>
                   {
-                this.state.data.imgs && this.state.commentData ? <DetailsViews data={this.state.data} comments={this.state.commentData}  />
+                this.state.data.imgs && this.state.commentData ? <DetailsViews data={this.state.data} comments={this.state.commentData} history={ this.props.history }  />
                 :
                 <div>加载中</div>
             }

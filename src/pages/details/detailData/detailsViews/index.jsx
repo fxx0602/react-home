@@ -4,6 +4,7 @@ import Swiper from '../../../../components/Swiper';
 import DetailsHeader from '../../../../components/Header';
 import Tabs from '../../../../components/Tabs';
 import CommentView from '../commentView';
+import StoreBuy from "../StoreBuy"
 
 // 引入图片
 import banner1 from '../../../../static/image/banner2.png';
@@ -55,6 +56,7 @@ export default class DetailsViews extends React.Component {
                                 <p>年代：{data.info.years}</p>
                             </div>
                         </div>
+                        <StoreBuy id={this.props.id} history={this.props.history}/>
                     </tab>
                     <tab tabname="房屋评价">
                       <CommentView comments={this.props.comments} />               
