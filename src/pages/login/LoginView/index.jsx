@@ -16,6 +16,7 @@ export default class LoginView extends React.Component{
     }
 
     loginHandler(){
+    
         this.props.onLoginHandler(this.state.value);
     }
 
@@ -24,10 +25,10 @@ export default class LoginView extends React.Component{
             <div id="login-container">
                 <div className="input-container phone-container">
                     <i className="icon-tablet"></i>
-                    <input 
+                    <input id="inputID" 
                         placeholder="请输入手机号"
                         value={ this.state.username }
-                        onChange={ this.userNameHandler.bind(this) }
+                     onChange={ this.userNameHandler.bind(this) }
                     />
                 </div>
                 <div className="input-container password-container">

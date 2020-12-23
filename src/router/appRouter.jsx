@@ -11,6 +11,7 @@ import App from '../pages/App';
 import Search from '../pages/Search';
 import Details from '../pages/details';
 import Login from '../pages/login';
+import ShopCar from '../pages/shopCar';
 
 
 export default class AppRouter extends React.Component {
@@ -27,6 +28,7 @@ export default class AppRouter extends React.Component {
                   <Route path="/search/:content" component={Search}></Route>
                   <Route path="/details/:id" component={Details}></Route>
                   <Route path="/login" component={Login}></Route>
+                  <Route path="/shopCar" component={ShopCar}></Route>
                   <Route  path="*" component={NotFound}></Route>
               </Switch>
               </App>

@@ -1,6 +1,8 @@
 import React from "react"
 import StoreBuyView from "./StoreBuyView"
 import {connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as collectActions from '../../../../actions/collect';
 
 class StoreBuy extends React.Component {
     /**
@@ -15,15 +17,47 @@ class StoreBuy extends React.Component {
         }
     }
 
+    componentDidMount() {
+        const flag = this.isStore();
+        this.setState({
+            collected:flag,
+        });
+    }
+
     storeHandle =() => {
-        console.log('收藏');
         const username = this.props.userinfo.name
         if (username) {
-          console.log('收藏实现')
+            if (this.isStore()) {
+               this.props.collectActions.cancelCollect({
+                   id:this.props.id,
+               });
+               this.setState({
+                collected:false,
+            });
+            } else {
+                this.props.collectActions.setCollect({
+                    id:this.props.id
+                  });
+                  this.setState({
+                    collected:true,
+                });
+            }
+
         } else {
          this.props.history.push("/login")
         }
+    }
 
+    /**
+     * 收藏判断
+     *
+     */
+    isStore() {
+        // 
+        const {id,collect } = this.props;
+        return collect.some((ele) =>{
+            return ele.id === id
+        })
     }
 
     bugHandle = ()=> {
@@ -34,7 +68,8 @@ class StoreBuy extends React.Component {
     render() {
         return (
             <div>
-                <StoreBuyView
+                <StoreBuyView 
+                   collected={this.state.collected}
                    onStoreHandle={this.storeHandle}
                    onBugHandle={this.bugHandle}
                 />
@@ -47,8 +82,17 @@ class StoreBuy extends React.Component {
 function mapStateToProps(state) {
     return{
         userinfo:state.userinfo,
+        collect:state.collect,
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        collectActions:bindActionCreators(collectActions,dispatch)
     }
 }
 
 
-export default connect(mapStateToProps)(StoreBuy)
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(StoreBuy)

@@ -4,7 +4,8 @@ const base = {
     homehot2:'/api/homehot2',
     search:'/api/search',
     details:'/api/details',
-    comment:'api/comment'
+    comment:'api/comment',
+    order:'/api/car',
 }
 
 export default base;

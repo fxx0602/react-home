@@ -15,7 +15,10 @@ export default class HomeHeader extends React.Component {
                     <i className="icon-angle-down"></i>
                 </div>
                 <div className="home-header-right float-right">
-                    <i className="iconfont icon-car"></i>
+                    <Link to="/shopCar">
+                       <i className="iconfont icon-car"></i>
+                    </Link>
+                    
                 </div>
                 <div className="home-header-middle">
                     <div className="search-container">
