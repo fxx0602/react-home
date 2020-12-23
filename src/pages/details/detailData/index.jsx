@@ -6,7 +6,8 @@ export default class DetailData extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data:{}
+            data:{},
+            commentData:[],
         }
     }
 
@@ -18,13 +19,21 @@ export default class DetailData extends React.Component {
              data:data,
          })
       });
+
+      api.comment.commenthData(this.props.id)
+      .then(resp => resp.json())
+      .then(data => {
+          this.setState({
+              commentData:data.data,
+          })
+      });
     }
 
     render() {
         return(
             <div>
                   {
-                this.state.data.imgs ? <DetailsViews data={this.state.data} />
+                this.state.data.imgs && this.state.commentData ? <DetailsViews data={this.state.data} comments={this.state.commentData}  />
                 :
                 <div>加载中</div>
             }
