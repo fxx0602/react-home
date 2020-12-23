@@ -6,6 +6,7 @@ const base = {
     details:'/api/details',
     comment:'api/comment',
     order:'/api/car',
+    orderComment:'/api/orderComment'
 }
 
 export default base;

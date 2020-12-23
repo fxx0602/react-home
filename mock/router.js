@@ -8,6 +8,7 @@ var detailsData = require("./data/details");
 var commentData = require("./data/comment");
 var orderData = require('./data/order');
 
+
 router.get(config.homehot1,function(req,res){
     // 接收城市参数
     var city = url.parse(req.url,true).query.city;
@@ -50,5 +51,13 @@ router.get("/car",function (req,res) {
     console.log("user:"+user);
     res.send(orderData);
 });
+
+router.post('/orderComment',function(req,res) {
+   var info = req.body.info;
+   console.log('INFO:'+info);
+   res.send({
+       msg:'评价成功',
+   })
+})
 
 module.exports = router;

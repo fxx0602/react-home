@@ -1,6 +1,6 @@
 import React from 'react'
 import './style.less'
-//import api from "../../../../api"
+import api from "../../../../api"
 
 export default class Item extends React.Component {
 
@@ -12,37 +12,37 @@ export default class Item extends React.Component {
         this.commentText = React.createRef();
     }
 
-    // componentDidMount(){
-    //     this.setState({
-    //         commentState:this.props.data.commentState
-    //     })
-    // }
+    componentDidMount(){
+        this.setState({
+            commentState:this.props.data.commentState
+        })
+    }
 
-    // commentHandler() {
-    //     this.setState({
-    //         commentState:1
-    //     })
-    // }
+    commentHandler = ()=> {
+        this.setState({
+            commentState:1
+        })
+    }
 
-    // submitCommentHandler(){
-    //     this.setState({
-    //         commentState:2
-    //     })
-    //     // 发送网络请求
-    //     api.orderComment.orderCommentData({
-    //         info:this.commentText.current.value
-    //     })
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         alert(data.msg);
-    //     })
-    // }
+    submitCommentHandler =() =>{
+        this.setState({
+            commentState:2
+        })
+        // 发送网络请求
+        api.order.orderComment({
+            info:this.commentText.current.value
+        })
+        .then(res => res.json())
+        .then(data => {
+            alert(data.msg);
+        })
+    }
 
-    // hideComment(){
-    //     this.setState({
-    //         commentState:0
-    //     })
-    // }
+    hideComment =() =>{
+        this.setState({
+            commentState:0
+        })
+    }
 
     render() {
         const data = this.props.data;
@@ -53,10 +53,10 @@ export default class Item extends React.Component {
                 </div>
                 <div className="order-item-comment float-right">
                     {
-                        data.commentState === 0 ?
-                            <button className="btn">评价</button>
+                        this.state.commentState === 0 ?
+                            <button className="btn" onClick={this.commentHandler}>评价</button>
                             : 
-                            data.commentState === 1 ? 
+                        this.state.commentState === 1 ? 
                             <button className="btn" >评价中</button>
                             :
                             <button className="btn unseleted-btn">已评价</button>
@@ -67,7 +67,16 @@ export default class Item extends React.Component {
                     <span>类型：{data.houseType}</span>
                     <span>价格：￥{data.price}</span>
                 </div>
-        
+                {
+                    this.state.commentState === 1 ?
+                    <div className="comment-text-container">
+                    <textarea style={{ width: '100%', height: '80px' }} className="comment-text" ref={ this.commentText }></textarea>
+                    <button className="btn" onClick={this.submitCommentHandler}>提交</button>
+                    &nbsp;
+                            <button className="btn unseleted-btn" onClick={this.hideComment}>取消</button>
+                    </div>
+                    :  ""
+                }
             </div>
         )
     }
